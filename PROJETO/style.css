@@ -1,0 +1,173 @@
+:root{
+  /* Variáveis globais de tema */
+  --bg:#0f1724; /* Cor de fundo principal (navy gray) */
+  --card:#0b1220; /* Cor de fundo do cartão */
+  --accent:#6ee7b7; /* Cor de destaque (verde claro) */
+  --muted:#94a3b8; /* Cor de texto secundário */
+  --glass: rgba(255,255,255,0.04); /* Efeito de vidro translúcido */
+  --radius:16px; /* Raio padrão de bordas arredondadas */
+  --maxw:900px; /* Largura máxima do conteúdo */
+  
+  /* Fonte padrão do site */
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* Garante que padding e border sejam incluídos no cálculo de largura/altura */
+*{
+  box-sizing:border-box
+}
+
+/* Configuração básica do documento */
+html,body{
+  height:100%; /* Faz ocupar toda a altura da tela */
+  margin:0; /* Remove margens padrão */
+  background:linear-gradient(180deg,var(--bg),#071029); /* Gradiente de fundo */
+  color:#e6eef8; /* Cor padrão do texto */
+}
+
+/* Container centralizado */
+.container{
+  max-width:var(--maxw); /* Limita largura */
+  margin:48px auto; /* Centraliza na tela com espaçamento superior/inferior */
+  padding:28px; /* Espaçamento interno */
+}
+
+/* Estilo do cartão principal */
+.card{
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); /* Fundo suave */
+  border-radius:var(--radius); /* Bordas arredondadas */
+  padding:28px; /* Espaçamento interno */
+  display:flex; /* Layout flexível horizontal */
+  gap:24px; /* Espaço entre elementos internos */
+  align-items:center; /* Alinha verticalmente ao centro */
+  box-shadow:0 8px 30px rgba(2,6,23,0.6); /* Sombra */
+}
+
+/* Área do avatar (foto) */
+.avatar{
+  flex:0 0 160px; /* Tamanho fixo no flexbox */
+  width:160px;
+  height:160px;
+  border-radius:20px; /* Bordas arredondadas */
+  overflow:hidden; /* Esconde partes da imagem que passam do limite */
+  background:linear-gradient(135deg,#0f1724,#071029); /* Fundo gradiente */
+  display:grid; /* Centraliza imagem no centro */
+  place-items:center;
+  border:1px solid rgba(255,255,255,0.04); /* Borda sutil */
+}
+
+/* Imagem do avatar */
+.avatar img{
+  width:100%; /* Ocupa toda a largura */
+  height:100%; /* Ocupa toda a altura */
+  object-fit:cover; /* Corta a imagem mantendo proporção */
+  display:block; /* Remove espaço extra abaixo da imagem */
+}
+
+/* Informações de texto ao lado da foto */
+.info{
+  flex:1; /* Ocupa o espaço restante */
+}
+
+/* Nome principal */
+h1{
+  margin:0;
+  font-size:28px;
+  letter-spacing:0.4px; /* Espaçamento entre letras */
+}
+
+/* Subtítulo abaixo do nome */
+.subtitle{
+  color:var(--muted);
+  margin-top:6px;
+  margin-bottom:16px;
+}
+
+/* Texto da biografia */
+p.bio{
+  margin:0 0 18px 0;
+  line-height:1.5; /* Altura de linha */
+  color:#cfe9ff;
+}
+
+/* Área de links */
+.links{
+  display:flex;
+  gap:12px; /* Espaçamento entre botões */
+  flex-wrap:wrap; /* Permite quebrar linha em telas menores */
+}
+
+/* Botões de link (GitHub, Instagram, LinkedIn) */
+.btn{
+  display:inline-flex; /* Ícone e texto lado a lado */
+  align-items:center;
+  gap:10px;
+  padding:10px 14px;
+  background:var(--glass); /* Fundo translúcido */
+  color:var(--accent);
+  border-radius:12px;
+  text-decoration:none; /* Remove sublinhado */
+  border:1px solid rgba(255,255,255,0.03); /* Borda sutil */
+  font-weight:600;
+  transition:transform .14s ease, box-shadow .14s ease; /* Animações */
+}
+
+/* Efeito hover dos botões */
+.btn:hover{
+  transform:translateY(-4px); /* Sobe levemente */
+  box-shadow:0 10px 30px rgba(30,120,90,0.12); /* Sombra ao passar o mouse */
+}
+
+/* Ícones dentro dos botões */
+.btn svg{
+  width:18px;
+  height:18px;
+  fill:currentColor; /* Herda a cor do texto */
+}
+
+/* Texto adicional */
+.meta{
+  margin-top:18px;
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* Seção "Sobre" */
+.about{
+  margin-top:22px;
+  background:rgba(255,255,255,0.02);
+  padding:18px;
+  border-radius:12px;
+}
+
+/* Grade para organização de itens */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr); /* 3 colunas iguais */
+  gap:12px;
+  margin-top:14px;
+}
+
+/* "Chip" — bloco pequeno */
+.chip{
+  background:rgba(255,255,255,0.02);
+  padding:10px;
+  border-radius:10px;
+  text-align:center;
+  font-weight:600;
+}
+
+/* Responsividade para telas menores */
+@media (max-width:720px){
+  .card{
+    flex-direction:column; /* Empilha elementos */
+    text-align:center; /* Centraliza textos */
+  }
+  .avatar{
+    width:140px;
+    height:140px; /* Diminui tamanho da foto */
+  }
+  .grid{
+    grid-template-columns:repeat(2,1fr); /* Reduz para 2 colunas */
+  }
+}
